@@ -36,6 +36,9 @@ export const AppReducer = (state, action) => {
                         currentExp.cost =  currentExp.cost - action.payload.cost;
                         budget = state.budget + action.payload.cost
                     }
+                    if (action.payload.cost < currentExp.cost) {
+                        alert("Invalid Operation");
+                    } 
                     return currentExp
                 })
                 action.type = "DONE";
@@ -78,7 +81,7 @@ export const AppReducer = (state, action) => {
 
 // 1. Sets the initial state when the app loads
 const initialState = {
-    budget: 2000,
+    budget: 5000,
     expenses: [
         { id: "Marketing", name: 'Marketing', cost: 50 },
         { id: "Finance", name: 'Finance', cost: 300 },
